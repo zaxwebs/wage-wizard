@@ -5,5 +5,7 @@
 
 <div class="flex min-h-screen">
 	<Sidebar />
-	<slot />
+	<div>
+		<slot />
+	</div>
 </div>
