@@ -10,13 +10,8 @@ export const groups = [
 	},
 	{
 		id: 2,
-		name: 'Crew Members / Alpha',
+		name: 'Crew Members',
 		hourlyWage: 80,
-	},
-	{
-		id: 3,
-		name: 'Crew Members / Bravo',
-		hourlyWage: 75,
 	},
 ]
 
@@ -58,17 +53,6 @@ export const employees = [
 		id: 4,
 		name: 'Lillian Spencer',
 		groupId: 2,
-		days: {
-			standard: 0,
-			dh: 0,
-			ed: 0,
-		},
-		overtime: 0,
-	},
-	{
-		id: 5,
-		name: 'Jesse Sanders',
-		groupId: 3,
 		days: {
 			standard: 0,
 			dh: 0,
