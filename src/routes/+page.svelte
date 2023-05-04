@@ -25,9 +25,9 @@
 	}
 </script>
 
-<div class="container mx-auto py-10">
+<div class="p-8">
 	{#each groups as group (group.id)}
-		<div class="mb-12">
+		<div class="mb-24">
 			<div class="flex">
 				<Heading tag="h5" class="mb-4">{group.name}</Heading>
 				<div>${group.hourlyWage}/hr</div>

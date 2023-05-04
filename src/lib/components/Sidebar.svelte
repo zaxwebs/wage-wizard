@@ -3,8 +3,8 @@
 	let spanClass = 'flex-1 ml-3 whitespace-nowrap'
 </script>
 
-<Sidebar>
-	<SidebarWrapper>
+<Sidebar class="dark">
+	<SidebarWrapper class="rounded-none h-full">
 		<SidebarGroup>
 			<SidebarItem label="Payout Calculator">
 				<svelte:fragment slot="icon">
