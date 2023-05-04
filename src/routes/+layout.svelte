@@ -1,5 +1,9 @@
 <script>
 	import '../app.postcss'
+	import Sidebar from '$lib/components/Sidebar.svelte'
 </script>
 
-<slot />
+<div class="flex">
+	<Sidebar />
+	<slot />
+</div>
