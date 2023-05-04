@@ -10,15 +10,20 @@ export const groups = [
 	},
 	{
 		id: 2,
-		name: 'Crew Members',
+		name: 'Crew Members / Alpha',
 		hourlyWage: 80,
+	},
+	{
+		id: 3,
+		name: 'Crew Members / Bravo',
+		hourlyWage: 75,
 	},
 ]
 
 export const employees = [
 	{
 		id: 1,
-		name: 'Employee A',
+		name: 'Jackson Tanner',
 		groupId: 1,
 		days: {
 			standard: 0,
@@ -29,7 +34,7 @@ export const employees = [
 	},
 	{
 		id: 2,
-		name: 'Employee C',
+		name: 'Grace McKinney',
 		groupId: 1,
 		days: {
 			standard: 0,
@@ -40,7 +45,7 @@ export const employees = [
 	},
 	{
 		id: 3,
-		name: 'Employee D',
+		name: 'Owen Parker',
 		groupId: 1,
 		days: {
 			standard: 0,
@@ -51,8 +56,19 @@ export const employees = [
 	},
 	{
 		id: 4,
-		name: 'Employee E',
+		name: 'Lillian Spencer',
 		groupId: 2,
+		days: {
+			standard: 0,
+			dh: 0,
+			ed: 0,
+		},
+		overtime: 0,
+	},
+	{
+		id: 5,
+		name: 'Jesse Sanders',
+		groupId: 3,
 		days: {
 			standard: 0,
 			dh: 0,
