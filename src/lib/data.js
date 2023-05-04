@@ -10,7 +10,7 @@ export const groups = [
 	},
 	{
 		id: 2,
-		name: 'Crew / A',
+		name: 'Crew Members',
 		hourlyWage: 80,
 	},
 ]

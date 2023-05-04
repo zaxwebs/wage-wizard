@@ -9,7 +9,6 @@
 		TableHeadCell,
 		Input,
 	} from 'flowbite-svelte'
-	import { Navbar, NavBrand, NavLi, NavUl, NavHamburger } from 'flowbite-svelte'
 
 	import { groups, employees, settings } from '$lib/data'
 
@@ -30,29 +29,11 @@
 	}
 </script>
 
-<Navbar let:hidden let:toggle>
-	<NavBrand href="/">
-		<img
-			src="https://flowbite.com/docs/images/logo.svg"
-			class="mr-3 h-6 sm:h-9"
-			alt="Flowbite Logo"
-		/>
-		<span class="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-			Wage Wizard v0.1
-		</span>
-	</NavBrand>
-	<NavHamburger on:click={toggle} />
-	<NavUl {hidden}>
-		<NavLi href="/" active={true}>Home</NavLi>
-		<NavLi href="/about">About</NavLi>
-	</NavUl>
-</Navbar>
-
-<div class="container mx-auto p-4">
+<div class="container mx-auto py-10">
 	{#each groups as group (group.id)}
-		<div class="mb-6">
+		<div class="mb-10">
 			<div class="flex">
-				<Heading tag="h4" class="mb-4">{group.name}</Heading>
+				<Heading tag="h5" class="mb-4">{group.name}</Heading>
 				<div>${group.hourlyWage}/hr</div>
 			</div>
 			<Table hoverable={true}>
