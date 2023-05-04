@@ -25,10 +25,7 @@
 	}
 </script>
 
-<div
-	class="h-28 w-full bg-cover bg-right-bottom"
-	style="background-image: url('/images/cover.jpg');"
-/>
+<div class="h-4 w-full bg-cover bg-bottom" style="background-image: url('/images/cover.jpg');" />
 <div class="p-8">
 	{#each groups as group (group.id)}
 		<div class="mb-24">
