@@ -45,6 +45,14 @@
 		employee.overtime = parseInt(e.target.value) || 0
 		employees = employees
 	}
+
+	const formatCurrency = (amount) => {
+		return amount.toLocaleString('en-IN', {
+			style: 'currency',
+			currency: 'USD',
+			maximumFractionDigits: amount % 1 === 0 ? 0 : 2,
+		})
+	}
 </script>
 
 <div class="h-24 w-full bg-cover bg-bottom" style="background-image: url('/images/cover.jpg');" />
@@ -67,7 +75,9 @@
 					<TableHeadCell class="!py-2 !px-3">Total Days</TableHeadCell>
 					<TableHeadCell class="!py-2 !px-3">Overtime Hours</TableHeadCell>
 					<TableHeadCell class="!py-2 !px-3">Total Hours</TableHeadCell>
-					<TableHeadCell class="!py-2 !px-3">Payout</TableHeadCell>
+					<TableHeadCell class="!py-2 !px-3 text-right min-w-[120px]"
+						>Payout</TableHeadCell
+					>
 				</TableHead>
 				<TableBody>
 					{#each employees.filter((employee) => employee.groupId === group.id) as employee (employee.id)}
@@ -130,7 +140,7 @@
 								/>
 							</TableBodyCell>
 							<TableBodyCell>{employee.totalHours}</TableBodyCell>
-							<TableBodyCell>{employee.payout}</TableBodyCell>
+							<TableBodyCell class="text-right">{employee.payout}</TableBodyCell>
 						</TableBodyRow>
 					{/each}
 				</TableBody>
@@ -139,12 +149,14 @@
 				>
 					<tr>
 						<td colspan="8" />
-						<td class="px-6 py-4"
-							>{employees
-								.filter((employee) => employee.groupId === group.id)
-								.reduce((sum, employee) => {
-									return sum + employee.payout
-								}, 0)}</td
+						<td class="px-6 py-4 text-right"
+							>{formatCurrency(
+								employees
+									.filter((employee) => employee.groupId === group.id)
+									.reduce((sum, employee) => {
+										return sum + employee.payout
+									}, 0)
+							)}</td
 						>
 					</tr></tfoot
 				>
