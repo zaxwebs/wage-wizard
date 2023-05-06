@@ -27,7 +27,7 @@
 </script>
 
 <div class="h-24 w-full bg-cover bg-bottom" style="background-image: url('/images/cover.jpg');" />
-<div class="p-8">
+<div class="py-4 px-3">
 	{#each groups as group (group.id)}
 		<div class="mb-24">
 			<div class="flex">
