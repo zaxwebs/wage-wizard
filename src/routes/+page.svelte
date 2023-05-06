@@ -57,28 +57,28 @@
 			</div>
 			<Table hoverable={true}>
 				<TableHead>
-					<TableHeadCell class="!py-2 !py-2">Picture</TableHeadCell>
-					<TableHeadCell class="!py-2 !py-2">Name</TableHeadCell>
-					<TableHeadCell class="!py-2 !py-2">Standard Days</TableHeadCell>
-					<TableHeadCell class="!py-2 !py-2">Dock Holidays</TableHeadCell>
-					<TableHeadCell class="!py-2 !py-2">Extra Days</TableHeadCell>
-					<TableHeadCell class="!py-2 !py-2">Total Days</TableHeadCell>
-					<TableHeadCell class="!py-2 !py-2">Overtime Hours</TableHeadCell>
-					<TableHeadCell class="!py-2 !py-2">Total Hours</TableHeadCell>
-					<TableHeadCell class="!py-2 !py-2">Payout</TableHeadCell>
+					<TableHeadCell class="!py-2 !px-3">Picture</TableHeadCell>
+					<TableHeadCell class="!py-2 !px-3">Name</TableHeadCell>
+					<TableHeadCell class="!py-2 !px-3">Standard Days</TableHeadCell>
+					<TableHeadCell class="!py-2 !px-3">Dock Holidays</TableHeadCell>
+					<TableHeadCell class="!py-2 !px-3">Extra Days</TableHeadCell>
+					<TableHeadCell class="!py-2 !px-3">Total Days</TableHeadCell>
+					<TableHeadCell class="!py-2 !px-3">Overtime Hours</TableHeadCell>
+					<TableHeadCell class="!py-2 !px-3">Total Hours</TableHeadCell>
+					<TableHeadCell class="!py-2 !px-3">Payout</TableHeadCell>
 				</TableHead>
 				<TableBody>
 					{#each employees.filter((employee) => employee.groupId === group.id) as employee (employee.id)}
 						<TableBodyRow>
-							<TableBodyCell class="!py-2 !py-2">
+							<TableBodyCell class="!py-2 !px-3">
 								<Avatar
 									class="flex-1"
 									data-name={employee.name}
 									src={employee.image}
 								/>
 							</TableBodyCell>
-							<TableBodyCell class="!py-2 !py-2">{employee.name}</TableBodyCell>
-							<TableBodyCell class="!py-2 !py-2">
+							<TableBodyCell class="!py-2 !px-3">{employee.name}</TableBodyCell>
+							<TableBodyCell class="!py-2 !px-3">
 								<Input
 									class="!p-1.5"
 									type="number"
@@ -90,7 +90,7 @@
 									}}
 								/>
 							</TableBodyCell>
-							<TableBodyCell class="!py-2 !py-2">
+							<TableBodyCell class="!py-2 !px-3">
 								<Input
 									class="!p-1.5"
 									type="number"
@@ -102,7 +102,7 @@
 									}}
 								/>
 							</TableBodyCell>
-							<TableBodyCell class="!py-2 !py-2">
+							<TableBodyCell class="!py-2 !px-3">
 								<Input
 									class="!p-1.5"
 									type="number"
@@ -114,8 +114,8 @@
 									}}
 								/>
 							</TableBodyCell>
-							<TableBodyCell class="!py-2 !py-2">{employee.totalDays}</TableBodyCell>
-							<TableBodyCell class="!py-2 !py-2">
+							<TableBodyCell class="!py-2 !px-3">{employee.totalDays}</TableBodyCell>
+							<TableBodyCell class="!py-2 !px-3">
 								<Input
 									class="!p-1.5"
 									type="number"
@@ -132,6 +132,18 @@
 						</TableBodyRow>
 					{/each}
 				</TableBody>
+				<tfoot class="text-gray-700 dark:text-gray-400 bg-gray-50 dark:bg-gray-700">
+					<tr class="font-semibold text-gray-900 dark:text-white">
+						<td colspan="8" />
+						<td class="px-6 py-4"
+							>{employees
+								.filter((employee) => employee.groupId === group.id)
+								.reduce((sum, employee) => {
+									return sum + employee.payout
+								}, 0)}</td
+						>
+					</tr></tfoot
+				>
 			</Table>
 		</div>
 	{/each}
