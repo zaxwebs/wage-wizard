@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte'
-	import { Heading, P, Span } from 'flowbite-svelte'
+	import { Heading, P, Span, Badge } from 'flowbite-svelte'
 	import {
 		Table,
 		TableBody,
@@ -71,9 +71,7 @@
 		<div class="mb-12">
 			<div class="flex mb-4 items-end">
 				<Heading tag="h5">{group.name}</Heading>
-				<div class="text-sm font-semibold uppercase text-gray-700 dark:text-gray-400">
-					${group.hourlyWage}/hr
-				</div>
+				<Badge class="uppercase font-semibold">${group.hourlyWage}/hr</Badge>
 			</div>
 			<Table hoverable={true}>
 				<TableHead>
