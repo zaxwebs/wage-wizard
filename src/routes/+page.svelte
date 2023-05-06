@@ -59,6 +59,7 @@
 							<TableBodyCell class="!py-2 !py-2">{employee.name}</TableBodyCell>
 							<TableBodyCell class="!py-2 !py-2">
 								<Input
+									class="!p-1.5"
 									type="number"
 									min="0"
 									step="1"
@@ -67,6 +68,7 @@
 							</TableBodyCell>
 							<TableBodyCell class="!py-2 !py-2">
 								<Input
+									class="!p-1.5"
 									type="number"
 									min="0"
 									step="1"
@@ -75,6 +77,7 @@
 							</TableBodyCell>
 							<TableBodyCell class="!py-2 !py-2">
 								<Input
+									class="!p-1.5"
 									type="number"
 									min="0"
 									step="1"
@@ -86,6 +89,7 @@
 							>
 							<TableBodyCell class="!py-2 !py-2">
 								<Input
+									class="!p-1.5"
 									type="number"
 									min="0"
 									step="1"
