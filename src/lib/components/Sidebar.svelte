@@ -1,12 +1,13 @@
 <script>
 	import { Sidebar, SidebarGroup, SidebarItem, SidebarWrapper } from 'flowbite-svelte'
+	import { page } from '$app/stores'
 	let spanClass = 'flex-1 ml-3 whitespace-nowrap'
 </script>
 
 <Sidebar class="dark">
 	<SidebarWrapper class="rounded-none h-full">
 		<SidebarGroup>
-			<SidebarItem label="Payout Calculator">
+			<SidebarItem active={$page.url.pathname === '/'} label="Payout Calculator">
 				<svelte:fragment slot="icon">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +68,7 @@
 					>
 				</svelte:fragment>
 			</SidebarItem>
-			<SidebarItem label="Teams">
+			<SidebarItem label="Groups">
 				<svelte:fragment slot="icon">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
