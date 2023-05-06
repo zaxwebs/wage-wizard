@@ -24,13 +24,6 @@
 	const daysToHours = (days, hoursPerDay) => {
 		return days * hoursPerDay
 	}
-
-	const generateRandomDP = () => {
-		const endpoints = ['men', 'women']
-		const randomEndpoint = endpoints[Math.floor(Math.random() * endpoints.length)]
-		const randomID = Math.floor(Math.random() * 50) + 1
-		return `https://randomuser.me/api/portraits/${randomEndpoint}/${randomID}.jpg`
-	}
 </script>
 
 <div class="h-24 w-full bg-cover bg-bottom" style="background-image: url('/images/cover.jpg');" />
@@ -60,7 +53,7 @@
 								<Avatar
 									class="flex-1"
 									data-name={employee.name}
-									src={generateRandomDP()}
+									src={employee.image}
 								/>
 							</TableBodyCell>
 							<TableBodyCell class="!py-2 !py-2">{employee.name}</TableBodyCell>
