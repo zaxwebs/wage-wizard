@@ -8,6 +8,7 @@
 		TableHead,
 		TableHeadCell,
 		Input,
+		Avatar,
 	} from 'flowbite-svelte'
 
 	import { groups, employees, settings } from '$lib/data'
@@ -23,6 +24,13 @@
 	const daysToHours = (days, hoursPerDay) => {
 		return days * hoursPerDay
 	}
+
+	const generateRandomDP = () => {
+		const endpoints = ['men', 'women']
+		const randomEndpoint = endpoints[Math.floor(Math.random() * endpoints.length)]
+		const randomID = Math.floor(Math.random() * 50) + 1
+		return `https://randomuser.me/api/portraits/${randomEndpoint}/${randomID}.jpg`
+	}
 </script>
 
 <div class="h-24 w-full bg-cover bg-bottom" style="background-image: url('/images/cover.jpg');" />
@@ -35,6 +43,7 @@
 			</div>
 			<Table hoverable={true}>
 				<TableHead>
+					<TableHeadCell>Picture</TableHeadCell>
 					<TableHeadCell>Name</TableHeadCell>
 					<TableHeadCell>Standard Days</TableHeadCell>
 					<TableHeadCell>Dock Holidays</TableHeadCell>
@@ -47,8 +56,15 @@
 				<TableBody>
 					{#each employeesByGroup(group.id) as employee (employee.id)}
 						<TableBodyRow>
-							<TableBodyCell>{employee.name}</TableBodyCell>
-							<TableBodyCell>
+							<TableBodyCell class="!py-2">
+								<Avatar
+									class="flex-1"
+									data-name={employee.name}
+									src={generateRandomDP()}
+								/>
+							</TableBodyCell>
+							<TableBodyCell class="!py-2">{employee.name}</TableBodyCell>
+							<TableBodyCell class="!py-2">
 								<Input
 									type="number"
 									min="0"
@@ -56,7 +72,7 @@
 									bind:value={employee.days.standard}
 								/>
 							</TableBodyCell>
-							<TableBodyCell>
+							<TableBodyCell class="!py-2">
 								<Input
 									type="number"
 									min="0"
@@ -64,7 +80,7 @@
 									bind:value={employee.days.dh}
 								/>
 							</TableBodyCell>
-							<TableBodyCell>
+							<TableBodyCell class="!py-2">
 								<Input
 									type="number"
 									min="0"
@@ -72,8 +88,8 @@
 									bind:value={employee.days.ed}
 								/>
 							</TableBodyCell>
-							<TableBodyCell>{sumDays(employee.days)}</TableBodyCell>
-							<TableBodyCell>
+							<TableBodyCell class="!py-2">{sumDays(employee.days)}</TableBodyCell>
+							<TableBodyCell class="!py-2">
 								<Input
 									type="number"
 									min="0"
