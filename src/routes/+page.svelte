@@ -43,28 +43,28 @@
 			</div>
 			<Table hoverable={true}>
 				<TableHead>
-					<TableHeadCell>Picture</TableHeadCell>
-					<TableHeadCell>Name</TableHeadCell>
-					<TableHeadCell>Standard Days</TableHeadCell>
-					<TableHeadCell>Dock Holidays</TableHeadCell>
-					<TableHeadCell>Extra Days</TableHeadCell>
-					<TableHeadCell>Total Days</TableHeadCell>
-					<TableHeadCell>Overtime Hours</TableHeadCell>
-					<TableHeadCell>Total Hours</TableHeadCell>
-					<TableHeadCell>Payout</TableHeadCell>
+					<TableHeadCell class="!py-2 !py-2">Picture</TableHeadCell>
+					<TableHeadCell class="!py-2 !py-2">Name</TableHeadCell>
+					<TableHeadCell class="!py-2 !py-2">Standard Days</TableHeadCell>
+					<TableHeadCell class="!py-2 !py-2">Dock Holidays</TableHeadCell>
+					<TableHeadCell class="!py-2 !py-2">Extra Days</TableHeadCell>
+					<TableHeadCell class="!py-2 !py-2">Total Days</TableHeadCell>
+					<TableHeadCell class="!py-2 !py-2">Overtime Hours</TableHeadCell>
+					<TableHeadCell class="!py-2 !py-2">Total Hours</TableHeadCell>
+					<TableHeadCell class="!py-2 !py-2">Payout</TableHeadCell>
 				</TableHead>
 				<TableBody>
 					{#each employeesByGroup(group.id) as employee (employee.id)}
 						<TableBodyRow>
-							<TableBodyCell class="!py-2">
+							<TableBodyCell class="!py-2 !py-2">
 								<Avatar
 									class="flex-1"
 									data-name={employee.name}
 									src={generateRandomDP()}
 								/>
 							</TableBodyCell>
-							<TableBodyCell class="!py-2">{employee.name}</TableBodyCell>
-							<TableBodyCell class="!py-2">
+							<TableBodyCell class="!py-2 !py-2">{employee.name}</TableBodyCell>
+							<TableBodyCell class="!py-2 !py-2">
 								<Input
 									type="number"
 									min="0"
@@ -72,7 +72,7 @@
 									bind:value={employee.days.standard}
 								/>
 							</TableBodyCell>
-							<TableBodyCell class="!py-2">
+							<TableBodyCell class="!py-2 !py-2">
 								<Input
 									type="number"
 									min="0"
@@ -80,7 +80,7 @@
 									bind:value={employee.days.dh}
 								/>
 							</TableBodyCell>
-							<TableBodyCell class="!py-2">
+							<TableBodyCell class="!py-2 !py-2">
 								<Input
 									type="number"
 									min="0"
@@ -88,8 +88,10 @@
 									bind:value={employee.days.ed}
 								/>
 							</TableBodyCell>
-							<TableBodyCell class="!py-2">{sumDays(employee.days)}</TableBodyCell>
-							<TableBodyCell class="!py-2">
+							<TableBodyCell class="!py-2 !py-2"
+								>{sumDays(employee.days)}</TableBodyCell
+							>
+							<TableBodyCell class="!py-2 !py-2">
 								<Input
 									type="number"
 									min="0"
