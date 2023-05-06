@@ -1,4 +1,5 @@
 <script>
+	import { onMount } from 'svelte'
 	import { Heading, P, Span } from 'flowbite-svelte'
 	import {
 		Table,
@@ -11,18 +12,38 @@
 		Avatar,
 	} from 'flowbite-svelte'
 
-	import { groups, employees, settings } from '$lib/data'
+	import { groups as groupsSource, employees as employeesSource, settings } from '$lib/data'
 
-	const employeesByGroup = (id) => {
-		return employees.filter((employee) => employee.groupId === id)
+	let employees = []
+	let groups = []
+
+	onMount(() => {
+		groups = groupsSource
+		employees = employeesSource.map((employee) => {
+			const hourlyWage = groups.filter((group) => group.id === employee.groupId)[0].hourlyWage
+			return {
+				...employee,
+				get totalDays() {
+					return this.days.standard + this.days.dh + this.days.ed
+				},
+				get totalHours() {
+					return this.totalDays * settings.dailyHours + this.overtime
+				},
+				get payout() {
+					return this.totalHours * hourlyWage
+				},
+			}
+		})
+	})
+
+	const handleDaysChange = (e, employee, dayType) => {
+		employee.days[dayType] = parseInt(e.target.value) || 0
+		employees = employees
 	}
 
-	const sumDays = (daysObject) => {
-		return daysObject.standard + daysObject.dh + daysObject.ed
-	}
-
-	const daysToHours = (days, hoursPerDay) => {
-		return days * hoursPerDay
+	const handleOvertimeChange = (e, employee) => {
+		employee.overtime = parseInt(e.target.value) || 0
+		employees = employees
 	}
 </script>
 
@@ -47,7 +68,7 @@
 					<TableHeadCell class="!py-2 !py-2">Payout</TableHeadCell>
 				</TableHead>
 				<TableBody>
-					{#each employeesByGroup(group.id) as employee (employee.id)}
+					{#each employees.filter((employee) => employee.groupId === group.id) as employee (employee.id)}
 						<TableBodyRow>
 							<TableBodyCell class="!py-2 !py-2">
 								<Avatar
@@ -65,7 +86,7 @@
 									step="1"
 									value={employee.days.standard}
 									on:change={(e) => {
-										employee.days.standard = parseInt(e.target.value) || 0
+										handleDaysChange(e, employee, 'standard')
 									}}
 								/>
 							</TableBodyCell>
@@ -77,7 +98,7 @@
 									step="1"
 									value={employee.days.dh}
 									on:change={(e) => {
-										employee.days.dh = parseInt(e.target.value) || 0
+										handleDaysChange(e, employee, 'dh')
 									}}
 								/>
 							</TableBodyCell>
@@ -89,13 +110,11 @@
 									step="1"
 									value={employee.days.ed}
 									on:change={(e) => {
-										employee.days.ed = parseInt(e.target.value) || 0
+										handleDaysChange(e, employee, 'ed')
 									}}
 								/>
 							</TableBodyCell>
-							<TableBodyCell class="!py-2 !py-2"
-								>{sumDays(employee.days)}</TableBodyCell
-							>
+							<TableBodyCell class="!py-2 !py-2">{employee.totalDays}</TableBodyCell>
 							<TableBodyCell class="!py-2 !py-2">
 								<Input
 									class="!p-1.5"
@@ -104,19 +123,12 @@
 									step="1"
 									value={employee.overtime}
 									on:change={(e) => {
-										employee.overtime = parseInt(e.target.value) || 0
+										handleOvertimeChange(e, employee)
 									}}
 								/>
 							</TableBodyCell>
-							<TableBodyCell
-								>{daysToHours(sumDays(employee.days), settings.dailyHours) +
-									employee.overtime}</TableBodyCell
-							>
-							<TableBodyCell
-								>{(daysToHours(sumDays(employee.days), settings.dailyHours) +
-									employee.overtime) *
-									group.hourlyWage}</TableBodyCell
-							>
+							<TableBodyCell>{employee.totalHours}</TableBodyCell>
+							<TableBodyCell>{employee.payout}</TableBodyCell>
 						</TableBodyRow>
 					{/each}
 				</TableBody>
