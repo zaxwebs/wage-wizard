@@ -59,6 +59,10 @@
 			maximumFractionDigits: amount % 1 === 0 ? 0 : 2,
 		})
 	}
+
+	const formatNumber = (number) => {
+		return number.toLocaleString('en-US')
+	}
 </script>
 
 <div class="h-24 w-full bg-cover bg-bottom" style="background-image: url('/images/cover.jpg');" />
@@ -146,7 +150,9 @@
 								/>
 							</TableBodyCell>
 							<TableBodyCell>{employee.totalHours}</TableBodyCell>
-							<TableBodyCell class="text-right">{employee.payout}</TableBodyCell>
+							<TableBodyCell class="text-right"
+								>{formatNumber(employee.payout)}</TableBodyCell
+							>
 						</TableBodyRow>
 					{/each}
 				</TableBody>
