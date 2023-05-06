@@ -18,7 +18,7 @@
 	}
 
 	const sumDays = (daysObject) => {
-		return parseInt(daysObject.standard) + parseInt(daysObject.dh) + parseInt(daysObject.ed)
+		return daysObject.standard + daysObject.dh + daysObject.ed
 	}
 
 	const daysToHours = (days, hoursPerDay) => {
@@ -63,7 +63,10 @@
 									type="number"
 									min="0"
 									step="1"
-									bind:value={employee.days.standard}
+									value={employee.days.standard}
+									on:change={(e) => {
+										employee.days.standard = parseInt(e.target.value) || 0
+									}}
 								/>
 							</TableBodyCell>
 							<TableBodyCell class="!py-2 !py-2">
@@ -72,7 +75,10 @@
 									type="number"
 									min="0"
 									step="1"
-									bind:value={employee.days.dh}
+									value={employee.days.dh}
+									on:change={(e) => {
+										employee.days.dh = parseInt(e.target.value) || 0
+									}}
 								/>
 							</TableBodyCell>
 							<TableBodyCell class="!py-2 !py-2">
@@ -81,7 +87,10 @@
 									type="number"
 									min="0"
 									step="1"
-									bind:value={employee.days.ed}
+									value={employee.days.ed}
+									on:change={(e) => {
+										employee.days.ed = parseInt(e.target.value) || 0
+									}}
 								/>
 							</TableBodyCell>
 							<TableBodyCell class="!py-2 !py-2"
@@ -93,16 +102,19 @@
 									type="number"
 									min="0"
 									step="1"
-									bind:value={employee.overtime}
+									value={employee.overtime}
+									on:change={(e) => {
+										employee.overtime = parseInt(e.target.value) || 0
+									}}
 								/>
 							</TableBodyCell>
 							<TableBodyCell
 								>{daysToHours(sumDays(employee.days), settings.dailyHours) +
-									parseInt(employee.overtime)}</TableBodyCell
+									employee.overtime}</TableBodyCell
 							>
 							<TableBodyCell
 								>{(daysToHours(sumDays(employee.days), settings.dailyHours) +
-									parseInt(employee.overtime)) *
+									employee.overtime) *
 									group.hourlyWage}</TableBodyCell
 							>
 						</TableBodyRow>
