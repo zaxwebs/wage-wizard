@@ -40,4 +40,16 @@ export const employees = [
 		image: 'https://randomuser.me/api/portraits/men/61.jpg',
 		groupId: 2,
 	},
+	{
+		id: 5,
+		name: 'Sophia Reynolds',
+		image: 'https://randomuser.me/api/portraits/women/61.jpg',
+		groupId: 1,
+	},
+	{
+		id: 6,
+		name: 'Matthew Hughes',
+		image: 'https://randomuser.me/api/portraits/men/32.jpg',
+		groupId: 2,
+	},
 ]

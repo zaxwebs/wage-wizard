@@ -64,7 +64,7 @@
 <div class="h-24 w-full bg-cover bg-bottom" style="background-image: url('/images/cover.jpg');" />
 <div class="p-4">
 	{#each groups as group (group.id)}
-		<div class="mb-24">
+		<div class="mb-12">
 			<div class="flex mb-4 items-end">
 				<Heading tag="h5">{group.name}</Heading>
 				<div class="text-sm font-semibold uppercase text-gray-700 dark:text-gray-400">
