@@ -51,9 +51,11 @@
 <div class="p-4">
 	{#each groups as group (group.id)}
 		<div class="mb-24">
-			<div class="flex">
-				<Heading tag="h5" class="mb-4">{group.name}</Heading>
-				<div>${group.hourlyWage}/hr</div>
+			<div class="flex mb-4 items-end">
+				<Heading tag="h5">{group.name}</Heading>
+				<div class="text-sm font-semibold uppercase text-gray-700 dark:text-gray-400">
+					${group.hourlyWage}/hr
+				</div>
 			</div>
 			<Table hoverable={true}>
 				<TableHead>
@@ -132,8 +134,10 @@
 						</TableBodyRow>
 					{/each}
 				</TableBody>
-				<tfoot class="text-gray-700 dark:text-gray-400 bg-gray-50 dark:bg-gray-700">
-					<tr class="font-semibold text-gray-900 dark:text-white">
+				<tfoot
+					class="text-gray-700 dark:text-gray-400 bg-gray-50 dark:bg-gray-700 font-semibold"
+				>
+					<tr>
 						<td colspan="8" />
 						<td class="px-6 py-4"
 							>{employees
