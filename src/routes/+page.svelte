@@ -23,6 +23,12 @@
 			const hourlyWage = groups.filter((group) => group.id === employee.groupId)[0].hourlyWage
 			return {
 				...employee,
+				days: {
+					standard: 0,
+					dh: 0,
+					ed: 0,
+				},
+				overtime: 0,
 				get totalDays() {
 					return this.days.standard + this.days.dh + this.days.ed
 				},
