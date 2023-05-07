@@ -105,7 +105,7 @@
 									min="0"
 									step="1"
 									value={employee.days.standard}
-									on:change={(e) => {
+									on:input={(e) => {
 										handleDaysChange(e, employee, 'standard')
 									}}
 								/>
@@ -117,7 +117,7 @@
 									min="0"
 									step="1"
 									value={employee.days.dh}
-									on:change={(e) => {
+									on:input={(e) => {
 										handleDaysChange(e, employee, 'dh')
 									}}
 								/>
@@ -129,7 +129,7 @@
 									min="0"
 									step="1"
 									value={employee.days.ed}
-									on:change={(e) => {
+									on:input={(e) => {
 										handleDaysChange(e, employee, 'ed')
 									}}
 								/>
@@ -142,7 +142,7 @@
 									min="0"
 									step="1"
 									value={employee.overtime}
-									on:change={(e) => {
+									on:input={(e) => {
 										handleOvertimeChange(e, employee)
 									}}
 								/>
